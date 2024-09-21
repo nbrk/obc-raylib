@@ -26,7 +26,9 @@ PROCEDURE Fade(color: Color; alpha: REAL; VAR res: Color);
 Extract the DEFINITION via `obb rl` upon building, or see the [provided file](rl.def).
 
 ## Example usage
-Here is the raylib's original example "2d camera system" translated to Oberon-2 using the bindings API:
+Here is the raylib's original [example "2d camera system"](https://www.raylib.com/examples/core/loader.html?name=core_2d_camera) translated to Oberon-2:
+
+![screenshot](camera2d.png)
 
 ``` oberon
 MODULE TestCamera2D;
