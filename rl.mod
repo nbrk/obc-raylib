@@ -144,12 +144,17 @@ MODULE rl;
       END;
 
       Texture* = RECORD
-         id : INTEGER;
-         width, height : INTEGER;
-         mipmaps, format : INTEGER;
+         id- : INTEGER;
+         width-, height- : INTEGER;
+         mipmaps-, format- : INTEGER;
       END;
 
       Texture2D* = Texture;
+
+      Camera2D* = RECORD
+         offset*, target* : Vector2;
+         rotation*, zoom* : REAL;
+      END;
 
    (* Supporting variables *)
 
@@ -164,6 +169,7 @@ MODULE rl;
    PROCEDURE InitWindow*(w, h : INTEGER; title : ARRAY OF CHAR) IS "InitWindow";
    PROCEDURE SetTargetFPS*(fps : INTEGER) IS "SetTargetFPS";
    PROCEDURE WindowShouldClose*() : BOOLEAN IS "WindowShouldClose";
+   PROCEDURE CloseWindow* IS "CloseWindow";
 
    PROCEDURE PollInputEvents* IS "PollInputEvents";
    PROCEDURE IsKeyDown* (key : INTEGER) : BOOLEAN IS "IsKeyDown";
@@ -171,15 +177,19 @@ MODULE rl;
    PROCEDURE GetMouseX*() : INTEGER IS "GetMouseX";
    PROCEDURE GetMouseY*() : INTEGER IS "GetMouseY";
    PROCEDURE GetMousePosition*(VAR vec : Vector2) IS "GetMousePositionWrapper";
+   PROCEDURE GetMouseWheelMove* () : REAL IS "GetMouseWheelMove";
 
    PROCEDURE BeginDrawing* IS "BeginDrawing";
    PROCEDURE EndDrawing* IS "EndDrawing";
+   PROCEDURE BeginMode2D*(camera : Camera2D) IS "BeginMode2DWrapper";
+   PROCEDURE EndMode2D* IS "EndMode2D";
    PROCEDURE ClearBackground* (VAR color : Color) IS "ClearBackgroundWrapper";
    PROCEDURE DrawLine* (sx, sy, ex, ey : INTEGER; color : Color) IS "DrawLineWrapper";
    PROCEDURE DrawCircle* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleWrapper";
    PROCEDURE DrawRectangle* (x, y, w, h : INTEGER; color : Color) IS "DrawRectangleWrapper";
    PROCEDURE DrawRectangleRec* (rec : Rectangle; color : Color) IS "DrawRectangleRecWrapper";
-   
+   PROCEDURE DrawRectangleLines*(x, y, w, h : INTEGER; color : Color) IS "DrawRectangleLinesWrapper";
+
    PROCEDURE DrawFPS*(x, y : INTEGER) IS "DrawFPS";
    PROCEDURE DrawText*(text : ARRAY OF CHAR; x, y, fontSize : INTEGER; color : Color) IS "DrawTextWrapper";
 
@@ -189,6 +199,10 @@ MODULE rl;
    PROCEDURE LoadTexture*(fileName : ARRAY OF CHAR; VAR tex : Texture2D) IS "LoadTextureWrapper";
    PROCEDURE UnloadTexture*(VAR tex : Texture2D) IS "UnloadTextureWrapper";
    PROCEDURE DrawTexture*(tex : Texture2D; x, y : INTEGER; tint : Color) IS "DrawTextureWrapper";
+
+   PROCEDURE GetRandomValue*(min, max : INTEGER) : INTEGER IS "GetRandomValue";
+
+   PROCEDURE Fade* (color : Color; alpha : REAL; VAR res : Color) IS "FadeWrapper";
 
    (* Internal service procedures *)
 

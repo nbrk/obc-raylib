@@ -25,6 +25,10 @@ void DrawRectangleWrapper(int x, int y, int w, int h, Color *color)
 {
    DrawRectangle(x, y, w, h, (Color){color->r, color->g, color->b, color->a});
 }
+void DrawRectangleLinesWrapper(int x, int y, int w, int h, Color *color)
+{
+   DrawRectangleLines(x, y, w, h, (Color){color->r, color->g, color->b, color->a});
+}
 void DrawRectangleRecWrapper(Rectangle *rec, Color *color)
 {
    DrawRectangleRec(*rec, (Color){color->r, color->g, color->b, color->a});
@@ -52,4 +56,12 @@ void UnloadTextureWrapper(Texture2D *tex)
 void DrawTextureWrapper(Texture2D *tex, int x, int y, Color *tint)
 {
    DrawTexture(*tex, x, y, *tint);
+}
+void BeginMode2DWrapper(Camera2D *camera)
+{
+   BeginMode2D(*camera);
+}
+void FadeWrapper(Color *color, float alpha, Color *res)
+{
+   *res = Fade(*color, alpha);
 }

@@ -260,9 +260,26 @@ TYPE Vector3 = RECORD (Vector2)
     END;
 
 TYPE Texture = RECORD
+      id-: INTEGER;
+      width-: INTEGER;
+      height-: INTEGER;
+      mipmaps-: INTEGER;
+      format-: INTEGER;
     END;
 
 TYPE Texture2D = RECORD
+      id-: INTEGER;
+      width-: INTEGER;
+      height-: INTEGER;
+      mipmaps-: INTEGER;
+      format-: INTEGER;
+    END;
+
+TYPE Camera2D = RECORD
+      offset: Vector2;
+      target: Vector2;
+      rotation: REAL;
+      zoom: REAL;
     END;
 
 VAR lightgray: Color;
@@ -323,6 +340,8 @@ PROCEDURE SetTargetFPS(fps: INTEGER);
 
 PROCEDURE WindowShouldClose(): BOOLEAN;
 
+PROCEDURE CloseWindow;
+
 PROCEDURE PollInputEvents;
 
 PROCEDURE IsKeyDown(key: INTEGER): BOOLEAN;
@@ -335,9 +354,15 @@ PROCEDURE GetMouseY(): INTEGER;
 
 PROCEDURE GetMousePosition(VAR vec: Vector2);
 
+PROCEDURE GetMouseWheelMove(): REAL;
+
 PROCEDURE BeginDrawing;
 
 PROCEDURE EndDrawing;
+
+PROCEDURE BeginMode2D(camera: Camera2D);
+
+PROCEDURE EndMode2D;
 
 PROCEDURE ClearBackground(VAR color: Color);
 
@@ -348,6 +373,8 @@ PROCEDURE DrawCircle(cx, cy: INTEGER; r: REAL; color: Color);
 PROCEDURE DrawRectangle(x, y, w, h: INTEGER; color: Color);
 
 PROCEDURE DrawRectangleRec(rec: Rectangle; color: Color);
+
+PROCEDURE DrawRectangleLines(x, y, w, h: INTEGER; color: Color);
 
 PROCEDURE DrawFPS(x, y: INTEGER);
 
@@ -362,5 +389,9 @@ PROCEDURE LoadTexture(fileName: ARRAY OF CHAR; VAR tex: Texture);
 PROCEDURE UnloadTexture(VAR tex: Texture);
 
 PROCEDURE DrawTexture(tex: Texture; x, y: INTEGER; tint: Color);
+
+PROCEDURE GetRandomValue(min, max: INTEGER): INTEGER;
+
+PROCEDURE Fade(color: Color; alpha: REAL; VAR res: Color);
 
 END rl.
