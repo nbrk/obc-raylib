@@ -4,10 +4,14 @@ MODULE Test;
 
    VAR
       blue : CHAR;
+      tex : rl.Texture2D;
+      texOn : BOOLEAN;
 
    PROCEDURE Frame;
       VAR
          col : rl.Color;
+         rec : rl.Rectangle;
+         vec : rl.Vector2;
    BEGIN
       rl.BeginDrawing;
 
@@ -17,12 +21,32 @@ MODULE Test;
       col.a := CHR(255);
       rl.ClearBackground(rl.DARKGRAY);
 
+      IF texOn THEN rl.DrawTexture(tex, 0, 0, rl.WHITE); END;
+
       col.r := blue;
       col.g := blue;
       col.b := blue;
       col.a := CHR(255);
-      rl.DrawLine (0, 0, 200, 200, rl.SKYBLUE);
+
+      rl.DrawLine (0, 0, 200, 200, col);
+
+      rec.x := 100.0;
+      rec.y := 100.0;
+      rec.width := 100.0;
+      rec.height := 100.0;
+      rl.GetMousePosition(vec);
+      IF rl.CheckCollisionPointRec(vec, rec) THEN
+         rl.DrawRectangleRec(rec, rl.GREEN);
+      ELSE
+         rl.DrawRectangleRec(rec, rl.DARKGREEN);
+      END;
+
+
+      rl.DrawCircle(rl.GetMouseX(), rl.GetMouseY(), 30.0, rl.RED);
       
+      rl.DrawText("Hello, world!", 300, 400, 20, rl.RAYWHITE);
+
+      rl.DrawFPS(500, 460);
       rl.EndDrawing;
    END Frame;
 
@@ -42,17 +66,24 @@ MODULE Test;
          Out.String("UP pressed"); Out.Ln;
          IF ORD(blue) < 255 THEN blue := CHR(ORD(blue) + 10); END;
       END;
+
+      texOn := rl.IsKeyDown(84); (* key T *)
+
    END CheckInputs;
 
    PROCEDURE Do;
    BEGIN
       rl.InitWindow(640, 480, "Testing");
-      rl.SetTargetFPS(24);
+      rl.SetTargetFPS(60);
+      rl.LoadTexture("tex.png", tex);
+      
       WHILE ~rl.WindowShouldClose() DO
          CheckInputs;
 
          Frame;
       END;
+
+      rl.UnloadTexture(tex);
    END Do;
 
 BEGIN

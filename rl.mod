@@ -6,13 +6,32 @@ MODULE rl;
 
    CONST
 
-
    (* Types *)
    
    TYPE
       Color* = RECORD
          r*, g*, b*, a* : CHAR;
-   END;
+      END;
+
+      Rectangle* = RECORD
+         x*, y*, width*, height* : REAL; 
+      END;
+
+      Vector2* = RECORD
+         x*, y* : REAL;
+      END;
+
+      Vector3* = RECORD(Vector2)
+         z* : REAL;
+      END;
+
+      Texture* = RECORD
+         id : INTEGER;
+         width, height : INTEGER;
+         mipmaps, format : INTEGER;
+      END;
+
+      Texture2D* = Texture;
 
    (* Supporting variables *)
 
@@ -22,20 +41,38 @@ MODULE rl;
       VIOLET*, DARKPURPLE*, BEIGE*, BROWN*, DARKBROWN*, WHITE*, BLACK*, BLANK*,
       MAGENTA*, RAYWHITE* : Color;
 
-   (* Procedurs *)
+   (* Foreign procedures *)
 
    PROCEDURE InitWindow*(w, h : INTEGER; title : ARRAY OF CHAR) IS "InitWindow";
    PROCEDURE SetTargetFPS*(fps : INTEGER) IS "SetTargetFPS";
    PROCEDURE WindowShouldClose*() : BOOLEAN IS "WindowShouldClose";
-   PROCEDURE BeginDrawing* IS "BeginDrawing";
-   PROCEDURE EndDrawing* IS "EndDrawing";
-   PROCEDURE ClearBackground* (VAR color : Color) IS "ClearBackgroundWrapper";
+
    PROCEDURE PollInputEvents* IS "PollInputEvents";
    PROCEDURE IsKeyDown* (key : INTEGER) : BOOLEAN IS "IsKeyDown";
    PROCEDURE IsKeyPressed* (key : INTEGER) : BOOLEAN IS "IsKeyPressed";
+   PROCEDURE GetMouseX*() : INTEGER IS "GetMouseX";
+   PROCEDURE GetMouseY*() : INTEGER IS "GetMouseY";
+   PROCEDURE GetMousePosition*(VAR vec : Vector2) IS "GetMousePositionWrapper";
+
+   PROCEDURE BeginDrawing* IS "BeginDrawing";
+   PROCEDURE EndDrawing* IS "EndDrawing";
+   PROCEDURE ClearBackground* (VAR color : Color) IS "ClearBackgroundWrapper";
    PROCEDURE DrawLine* (sx, sy, ex, ey : INTEGER; color : Color) IS "DrawLineWrapper";
+   PROCEDURE DrawCircle* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleWrapper";
+   PROCEDURE DrawRectangle* (x, y, w, h : INTEGER; color : Color) IS "DrawRectangleWrapper";
+   PROCEDURE DrawRectangleRec* (rec : Rectangle; color : Color) IS "DrawRectangleRecWrapper";
+   
+   PROCEDURE DrawFPS*(x, y : INTEGER) IS "DrawFPS";
+   PROCEDURE DrawText*(text : ARRAY OF CHAR; x, y, fontSize : INTEGER; color : Color) IS "DrawTextWrapper";
 
+   PROCEDURE CheckCollisionPointRec* (point : Vector2; rec : Rectangle) : BOOLEAN IS "CheckCollisionPointRecWrapper";
+   PROCEDURE CheckCollisionRecs* (rec1, rec2 : Rectangle) : BOOLEAN IS "CheckCollisionRecsWrapper";
 
+   PROCEDURE LoadTexture*(fileName : ARRAY OF CHAR; VAR tex : Texture2D) IS "LoadTextureWrapper";
+   PROCEDURE UnloadTexture*(VAR tex : Texture2D) IS "UnloadTextureWrapper";
+   PROCEDURE DrawTexture*(tex : Texture2D; x, y : INTEGER; tint : Color) IS "DrawTextureWrapper";
+
+   (* Internal service procedures *)
 
    PROCEDURE SetupConstants;
 
