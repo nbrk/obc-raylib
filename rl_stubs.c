@@ -9,29 +9,27 @@ void GetMousePositionWrapper(Vector2 *vec)
 }
 void ClearBackgroundWrapper(Color *color)
 {
-   // printf("Using the stub %s; %p: r=%d, g=%d, b=%d\n", __FUNCTION__, color,
-   //    color->r, color->g, color->b);
-   ClearBackground((Color){color->r, color->g, color->b, color->a});
+   ClearBackground(*color);
 }
 void DrawLineWrapper(int sx, int sy, int ex, int ey, Color *color)
 {
-   DrawLine(sx, sy, ex, ey, (Color){color->r, color->g, color->b, color->a});
+   DrawLine(sx, sy, ex, ey, *color);
 }
 void DrawCircleWrapper(int cx, int cy, float r, Color *color)
 {
-   DrawCircle(cx, cy, r, (Color){color->r, color->g, color->b, color->a});
+   DrawCircle(cx, cy, r, *color);
 }
 void DrawRectangleWrapper(int x, int y, int w, int h, Color *color)
 {
-   DrawRectangle(x, y, w, h, (Color){color->r, color->g, color->b, color->a});
+   DrawRectangle(x, y, w, h, *color);
 }
 void DrawRectangleLinesWrapper(int x, int y, int w, int h, Color *color)
 {
-   DrawRectangleLines(x, y, w, h, (Color){color->r, color->g, color->b, color->a});
+   DrawRectangleLines(x, y, w, h, *color);
 }
 void DrawRectangleRecWrapper(Rectangle *rec, Color *color)
 {
-   DrawRectangleRec(*rec, (Color){color->r, color->g, color->b, color->a});
+   DrawRectangleRec(*rec, *color);
 }
 void DrawTextWrapper(const char *text, int x, int y, int fontSize, Color *color)
 {
