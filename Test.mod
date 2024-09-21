@@ -19,9 +19,9 @@ MODULE Test;
       col.g := CHR(33);
       col.b := CHR(33);
       col.a := CHR(255);
-      rl.ClearBackground(rl.DARKGRAY);
+      rl.ClearBackground(rl.darkgray);
 
-      IF texOn THEN rl.DrawTexture(tex, 0, 0, rl.WHITE); END;
+      IF texOn THEN rl.DrawTexture(tex, 0, 0, rl.white); END;
 
       col.r := blue;
       col.g := blue;
@@ -36,15 +36,15 @@ MODULE Test;
       rec.height := 100.0;
       rl.GetMousePosition(vec);
       IF rl.CheckCollisionPointRec(vec, rec) THEN
-         rl.DrawRectangleRec(rec, rl.GREEN);
+         rl.DrawRectangleRec(rec, rl.brown);
       ELSE
-         rl.DrawRectangleRec(rec, rl.DARKGREEN);
+         rl.DrawRectangleRec(rec, rl.darkbrown);
       END;
 
 
-      rl.DrawCircle(rl.GetMouseX(), rl.GetMouseY(), 30.0, rl.RED);
+      rl.DrawCircle(rl.GetMouseX(), rl.GetMouseY(), 30.0, rl.red);
       
-      rl.DrawText("Hello, world!", 300, 400, 20, rl.RAYWHITE);
+      rl.DrawText("Hello, world!", 300, 400, 20, rl.raywhite);
 
       rl.DrawFPS(500, 460);
       rl.EndDrawing;

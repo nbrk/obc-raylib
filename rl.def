@@ -1,5 +1,239 @@
 DEFINITION rl;
 
+CONST keyNull = 0;
+
+CONST keyApostrophe = 39;
+
+CONST keyComma = 44;
+
+CONST keyMinus = 45;
+
+CONST keyPeriod = 46;
+
+CONST keySlash = 47;
+
+CONST keyZero = 48;
+
+CONST keyOne = 49;
+
+CONST keyTwo = 50;
+
+CONST keyThree = 51;
+
+CONST keyFour = 52;
+
+CONST keyFive = 53;
+
+CONST keySix = 54;
+
+CONST keySeven = 55;
+
+CONST keyEight = 56;
+
+CONST keyNine = 57;
+
+CONST keySemicolon = 59;
+
+CONST keyEqual = 61;
+
+CONST keyA = 65;
+
+CONST keyB = 66;
+
+CONST keyC = 67;
+
+CONST keyD = 68;
+
+CONST keyE = 69;
+
+CONST keyF = 70;
+
+CONST keyG = 71;
+
+CONST keyH = 72;
+
+CONST keyI = 73;
+
+CONST keyJ = 74;
+
+CONST keyK = 75;
+
+CONST keyL = 76;
+
+CONST keyM = 77;
+
+CONST keyN = 78;
+
+CONST keyO = 79;
+
+CONST keyP = 80;
+
+CONST keyQ = 81;
+
+CONST keyR = 82;
+
+CONST keyS = 83;
+
+CONST keyT = 84;
+
+CONST keyU = 85;
+
+CONST keyV = 86;
+
+CONST keyW = 87;
+
+CONST keyX = 88;
+
+CONST keyY = 89;
+
+CONST keyZ = 90;
+
+CONST keyLeftBracket = 91;
+
+CONST keyBackslash = 92;
+
+CONST keyRightBracket = 93;
+
+CONST keyGrave = 96;
+
+CONST keySpace = 32;
+
+CONST keyEscape = 256;
+
+CONST keyEnter = 257;
+
+CONST keyTab = 258;
+
+CONST keyBackspace = 259;
+
+CONST keyInsert = 260;
+
+CONST keyDelete = 261;
+
+CONST keyRight = 262;
+
+CONST keyLeft = 263;
+
+CONST keyDown = 264;
+
+CONST keyUp = 265;
+
+CONST keyPageUp = 266;
+
+CONST keyPageDown = 267;
+
+CONST keyHome = 268;
+
+CONST keyEnd = 269;
+
+CONST keyCapsLock = 280;
+
+CONST keyScrollLock = 281;
+
+CONST keyNumLock = 282;
+
+CONST keyPrintScreen = 283;
+
+CONST keyPause = 284;
+
+CONST keyF1 = 290;
+
+CONST keyF2 = 291;
+
+CONST keyF3 = 292;
+
+CONST keyF4 = 293;
+
+CONST keyF5 = 294;
+
+CONST keyF6 = 295;
+
+CONST keyF7 = 296;
+
+CONST keyF8 = 297;
+
+CONST keyF9 = 298;
+
+CONST keyF10 = 299;
+
+CONST keyF11 = 300;
+
+CONST keyF12 = 301;
+
+CONST keyLeftShift = 340;
+
+CONST keyLeftControl = 341;
+
+CONST keyLeftAlt = 342;
+
+CONST keyLeftSuper = 343;
+
+CONST keyRightShift = 344;
+
+CONST keyRightControl = 345;
+
+CONST keyRightAlt = 346;
+
+CONST keyRightSuper = 347;
+
+CONST keyKbMenu = 348;
+
+CONST keyKp0 = 320;
+
+CONST keyKp1 = 321;
+
+CONST keyKp2 = 322;
+
+CONST keyKp3 = 323;
+
+CONST keyKp4 = 324;
+
+CONST keyKp5 = 325;
+
+CONST keyKp6 = 326;
+
+CONST keyKp7 = 327;
+
+CONST keyKp8 = 328;
+
+CONST keyKp9 = 329;
+
+CONST keyKpDecimal = 330;
+
+CONST keyKpDivide = 331;
+
+CONST keyKpMultiply = 332;
+
+CONST keyKpSubtract = 333;
+
+CONST keyKpAdd = 334;
+
+CONST keyKpEnter = 335;
+
+CONST keyKpEqual = 336;
+
+CONST keyBack = 4;
+
+CONST keyMenu = 82;
+
+CONST keyVolumeUp = 24;
+
+CONST keyVolumeDown = 25;
+
+CONST mouseButtonLeft = 0;
+
+CONST mouseButtonRight = 1;
+
+CONST mouseButtonMiddle = 2;
+
+CONST mouseButtonSide = 3;
+
+CONST mouseButtonExtra = 4;
+
+CONST mouseButtonForward = 5;
+
+CONST mouseButtonBack = 6;
+
 TYPE Color = RECORD
       r: CHAR;
       g: CHAR;
@@ -31,57 +265,57 @@ TYPE Texture = RECORD
 TYPE Texture2D = RECORD
     END;
 
-VAR LIGHTGRAY: Color;
+VAR lightgray: Color;
 
-VAR GRAY: Color;
+VAR gray: Color;
 
-VAR DARKGRAY: Color;
+VAR darkgray: Color;
 
-VAR YELLOW: Color;
+VAR yellow: Color;
 
-VAR GOLD: Color;
+VAR gold: Color;
 
-VAR ORANGE: Color;
+VAR orange: Color;
 
-VAR PINK: Color;
+VAR pink: Color;
 
-VAR RED: Color;
+VAR red: Color;
 
-VAR MAROON: Color;
+VAR maroon: Color;
 
-VAR GREEN: Color;
+VAR green: Color;
 
-VAR LIME: Color;
+VAR lime: Color;
 
-VAR DARKGREEN: Color;
+VAR darkgreen: Color;
 
-VAR SKYBLUE: Color;
+VAR skyblue: Color;
 
-VAR BLUE: Color;
+VAR blue: Color;
 
-VAR DARKBLUE: Color;
+VAR darkblue: Color;
 
-VAR PURPLE: Color;
+VAR purple: Color;
 
-VAR VIOLET: Color;
+VAR violet: Color;
 
-VAR DARKPURPLE: Color;
+VAR darkpurple: Color;
 
-VAR BEIGE: Color;
+VAR beige: Color;
 
-VAR BROWN: Color;
+VAR brown: Color;
 
-VAR DARKBROWN: Color;
+VAR darkbrown: Color;
 
-VAR WHITE: Color;
+VAR white: Color;
 
-VAR BLACK: Color;
+VAR black: Color;
 
-VAR BLANK: Color;
+VAR blank: Color;
 
-VAR MAGENTA: Color;
+VAR magenta: Color;
 
-VAR RAYWHITE: Color;
+VAR raywhite: Color;
 
 PROCEDURE InitWindow(w, h: INTEGER; title: ARRAY OF CHAR);
 
