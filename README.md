@@ -6,3 +6,4 @@ Oberon-2 programs compiled by the Oxford Oberon Compiler (OBC).
 For this, a subset of popular libraries `raylib`, `raymath` and `raygui` is
 to be bound using the OBC's own FFI and bespoke C wrappers where necessary.
 
+Extract the DEFINITION via `obb rl` upon building, or see the [provided file](rl.def).
