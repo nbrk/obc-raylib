@@ -1,0 +1,132 @@
+DEFINITION rl;
+
+TYPE Color = RECORD
+      r: CHAR;
+      g: CHAR;
+      b: CHAR;
+      a: CHAR;
+    END;
+
+TYPE Rectangle = RECORD
+      x: REAL;
+      y: REAL;
+      width: REAL;
+      height: REAL;
+    END;
+
+TYPE Vector2 = RECORD
+      x: REAL;
+      y: REAL;
+    END;
+
+TYPE Vector3 = RECORD (Vector2)
+      x: REAL;
+      y: REAL;
+      z: REAL;
+    END;
+
+TYPE Texture = RECORD
+    END;
+
+TYPE Texture2D = RECORD
+    END;
+
+VAR LIGHTGRAY: Color;
+
+VAR GRAY: Color;
+
+VAR DARKGRAY: Color;
+
+VAR YELLOW: Color;
+
+VAR GOLD: Color;
+
+VAR ORANGE: Color;
+
+VAR PINK: Color;
+
+VAR RED: Color;
+
+VAR MAROON: Color;
+
+VAR GREEN: Color;
+
+VAR LIME: Color;
+
+VAR DARKGREEN: Color;
+
+VAR SKYBLUE: Color;
+
+VAR BLUE: Color;
+
+VAR DARKBLUE: Color;
+
+VAR PURPLE: Color;
+
+VAR VIOLET: Color;
+
+VAR DARKPURPLE: Color;
+
+VAR BEIGE: Color;
+
+VAR BROWN: Color;
+
+VAR DARKBROWN: Color;
+
+VAR WHITE: Color;
+
+VAR BLACK: Color;
+
+VAR BLANK: Color;
+
+VAR MAGENTA: Color;
+
+VAR RAYWHITE: Color;
+
+PROCEDURE InitWindow(w, h: INTEGER; title: ARRAY OF CHAR);
+
+PROCEDURE SetTargetFPS(fps: INTEGER);
+
+PROCEDURE WindowShouldClose(): BOOLEAN;
+
+PROCEDURE PollInputEvents;
+
+PROCEDURE IsKeyDown(key: INTEGER): BOOLEAN;
+
+PROCEDURE IsKeyPressed(key: INTEGER): BOOLEAN;
+
+PROCEDURE GetMouseX(): INTEGER;
+
+PROCEDURE GetMouseY(): INTEGER;
+
+PROCEDURE GetMousePosition(VAR vec: Vector2);
+
+PROCEDURE BeginDrawing;
+
+PROCEDURE EndDrawing;
+
+PROCEDURE ClearBackground(VAR color: Color);
+
+PROCEDURE DrawLine(sx, sy, ex, ey: INTEGER; color: Color);
+
+PROCEDURE DrawCircle(cx, cy: INTEGER; r: REAL; color: Color);
+
+PROCEDURE DrawRectangle(x, y, w, h: INTEGER; color: Color);
+
+PROCEDURE DrawRectangleRec(rec: Rectangle; color: Color);
+
+PROCEDURE DrawFPS(x, y: INTEGER);
+
+PROCEDURE DrawText(text: ARRAY OF CHAR; x, y, fontSize: INTEGER; color: Color);
+
+PROCEDURE CheckCollisionPointRec(point: Vector2; rec: Rectangle): BOOLEAN;
+
+PROCEDURE CheckCollisionRecs(rec1, rec2: Rectangle): BOOLEAN;
+
+PROCEDURE LoadTexture(fileName: ARRAY OF CHAR; VAR tex: Texture);
+
+PROCEDURE UnloadTexture(VAR tex: Texture);
+
+PROCEDURE DrawTexture(tex: Texture; x, y: INTEGER; tint: Color);
+
+END rl.
