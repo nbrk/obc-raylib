@@ -63,3 +63,11 @@ void FadeWrapper(Color *color, float alpha, Color *res)
 {
    *res = Fade(*color, alpha);
 }
+unsigned int ColorToIntWrapper(Color *color)
+{
+   return ColorToInt(*color);
+}
+void GetColorWrapper(unsigned int hexValue, Color *res)
+{
+   *res = GetColor(hexValue);
+}

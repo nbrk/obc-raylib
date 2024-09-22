@@ -170,6 +170,8 @@ MODULE rl;
    PROCEDURE SetTargetFPS*(fps : INTEGER) IS "SetTargetFPS";
    PROCEDURE WindowShouldClose*() : BOOLEAN IS "WindowShouldClose";
    PROCEDURE CloseWindow* IS "CloseWindow";
+   PROCEDURE GetScreenWidth*() : INTEGER IS "GetScreenWidth";
+   PROCEDURE GetScreenHeight*() : INTEGER IS "GetScreenHeight";
 
    PROCEDURE PollInputEvents* IS "PollInputEvents";
    PROCEDURE IsKeyDown* (key : INTEGER) : BOOLEAN IS "IsKeyDown";
@@ -203,7 +205,8 @@ MODULE rl;
    PROCEDURE GetRandomValue*(min, max : INTEGER) : INTEGER IS "GetRandomValue";
 
    PROCEDURE Fade* (color : Color; alpha : REAL; VAR res : Color) IS "FadeWrapper";
-
+   PROCEDURE ColorToInt* (color : Color) : LONGINT IS "ColorToIntWrapper";
+   PROCEDURE GetColor*(hexValue : LONGINT; VAR res : Color) IS "GetColorWrapper";
    (* Internal service procedures *)
 
    PROCEDURE SetupColorConstants;
