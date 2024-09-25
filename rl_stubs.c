@@ -11,13 +11,25 @@ void ClearBackgroundWrapper(Color *color)
 {
    ClearBackground(*color);
 }
+void DrawPixelWrapper(int x, int y, Color *color)
+{
+   DrawPixel(x, y, *color);
+}
 void DrawLineWrapper(int sx, int sy, int ex, int ey, Color *color)
 {
    DrawLine(sx, sy, ex, ey, *color);
 }
+void DrawLineExWrapper(Vector2 *sv, Vector2 *ev, float thick, Color *color)
+{
+   DrawLineEx(*sv, *ev, thick, *color);
+}
 void DrawCircleWrapper(int cx, int cy, float r, Color *color)
 {
    DrawCircle(cx, cy, r, *color);
+}
+void DrawCircleLinesWrapper(int cx, int cy, float r, Color *color)
+{
+   DrawCircleLines(cx, cy, r, *color);
 }
 void DrawRectangleWrapper(int x, int y, int w, int h, Color *color)
 {

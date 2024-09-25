@@ -125,14 +125,14 @@ MODULE rl;
       mouseButtonBack- = 6;   (*  Mouse button back (advanced mouse device) *)
 
    (* Types *)
-   
+
    TYPE
       Color* = RECORD
          r*, g*, b*, a* : CHAR;
       END;
 
       Rectangle* = RECORD
-         x*, y*, width*, height* : REAL; 
+         x*, y*, width*, height* : REAL;
       END;
 
       Vector2* = RECORD
@@ -159,7 +159,7 @@ MODULE rl;
    (* Supporting variables *)
 
    VAR
-      lightgray*, gray*, darkgray*, yellow*, gold*, orange*, pink*, red*, 
+      lightgray*, gray*, darkgray*, yellow*, gold*, orange*, pink*, red*,
       maroon*, green*, lime*, darkgreen*, skyblue*, blue*, darkblue*, purple*,
       violet*, darkpurple*, beige*, brown*, darkbrown*, white*, black*, blank*,
       magenta*, raywhite* : Color;
@@ -172,6 +172,12 @@ MODULE rl;
    PROCEDURE CloseWindow* IS "CloseWindow";
    PROCEDURE GetScreenWidth*() : INTEGER IS "GetScreenWidth";
    PROCEDURE GetScreenHeight*() : INTEGER IS "GetScreenHeight";
+   PROCEDURE GetMonitorWidth* (monitor : INTEGER) : INTEGER IS "GetMonitorWidth";
+   PROCEDURE GetMonitorHeight* (monitor : INTEGER) : INTEGER IS "GetMonitorHeight";
+   PROCEDURE GetCurrentMonitor* () : INTEGER IS "GetCurrentMonitor";
+   PROCEDURE ToggleFullscreen* IS "ToggleFullscreen";
+   PROCEDURE ShowCursor* IS "ShowCursor";
+   PROCEDURE HideCursor* IS "HideCursor";
 
    PROCEDURE PollInputEvents* IS "PollInputEvents";
    PROCEDURE IsKeyDown* (key : INTEGER) : BOOLEAN IS "IsKeyDown";
@@ -180,14 +186,21 @@ MODULE rl;
    PROCEDURE GetMouseY*() : INTEGER IS "GetMouseY";
    PROCEDURE GetMousePosition*(VAR vec : Vector2) IS "GetMousePositionWrapper";
    PROCEDURE GetMouseWheelMove* () : REAL IS "GetMouseWheelMove";
+   PROCEDURE IsMouseButtonDown* (button : INTEGER) : BOOLEAN IS "IsMouseButtonDown";
 
    PROCEDURE BeginDrawing* IS "BeginDrawing";
    PROCEDURE EndDrawing* IS "EndDrawing";
    PROCEDURE BeginMode2D*(camera : Camera2D) IS "BeginMode2DWrapper";
    PROCEDURE EndMode2D* IS "EndMode2D";
-   PROCEDURE ClearBackground* (VAR color : Color) IS "ClearBackgroundWrapper";
+   PROCEDURE GetFrameTime*() : REAL IS "GetFrameTime";
+   PROCEDURE GetTime*() : LONGREAL IS "GetTime";
+
+   PROCEDURE ClearBackground* (color : Color) IS "ClearBackgroundWrapper";
+   PROCEDURE DrawPixel* (x, y : INTEGER; color : Color) IS "DrawPixelWrapper";
    PROCEDURE DrawLine* (sx, sy, ex, ey : INTEGER; color : Color) IS "DrawLineWrapper";
+   PROCEDURE DrawLineEx*(sv, ev : Vector2; thick : REAL; color : Color) IS "DrawLineExWrapper";
    PROCEDURE DrawCircle* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleWrapper";
+   PROCEDURE DrawCircleLines* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleLinesWrapper";
    PROCEDURE DrawRectangle* (x, y, w, h : INTEGER; color : Color) IS "DrawRectangleWrapper";
    PROCEDURE DrawRectangleRec* (rec : Rectangle; color : Color) IS "DrawRectangleRecWrapper";
    PROCEDURE DrawRectangleLines*(x, y, w, h : INTEGER; color : Color) IS "DrawRectangleLinesWrapper";
@@ -207,6 +220,7 @@ MODULE rl;
    PROCEDURE Fade* (color : Color; alpha : REAL; VAR res : Color) IS "FadeWrapper";
    PROCEDURE ColorToInt* (color : Color) : LONGINT IS "ColorToIntWrapper";
    PROCEDURE GetColor*(hexValue : LONGINT; VAR res : Color) IS "GetColorWrapper";
+
    (* Internal service procedures *)
 
    PROCEDURE SetupColorConstants;

@@ -346,6 +346,18 @@ PROCEDURE GetScreenWidth(): INTEGER;
 
 PROCEDURE GetScreenHeight(): INTEGER;
 
+PROCEDURE GetMonitorWidth(monitor: INTEGER): INTEGER;
+
+PROCEDURE GetMonitorHeight(monitor: INTEGER): INTEGER;
+
+PROCEDURE GetCurrentMonitor(): INTEGER;
+
+PROCEDURE ToggleFullscreen;
+
+PROCEDURE ShowCursor;
+
+PROCEDURE HideCursor;
+
 PROCEDURE PollInputEvents;
 
 PROCEDURE IsKeyDown(key: INTEGER): BOOLEAN;
@@ -360,6 +372,8 @@ PROCEDURE GetMousePosition(VAR vec: Vector2);
 
 PROCEDURE GetMouseWheelMove(): REAL;
 
+PROCEDURE IsMouseButtonDown(button: INTEGER): BOOLEAN;
+
 PROCEDURE BeginDrawing;
 
 PROCEDURE EndDrawing;
@@ -368,11 +382,21 @@ PROCEDURE BeginMode2D(camera: Camera2D);
 
 PROCEDURE EndMode2D;
 
-PROCEDURE ClearBackground(VAR color: Color);
+PROCEDURE GetFrameTime(): REAL;
+
+PROCEDURE GetTime(): LONGREAL;
+
+PROCEDURE ClearBackground(color: Color);
+
+PROCEDURE DrawPixel(x, y: INTEGER; color: Color);
 
 PROCEDURE DrawLine(sx, sy, ex, ey: INTEGER; color: Color);
 
+PROCEDURE DrawLineEx(sv, ev: Vector2; thick: REAL; color: Color);
+
 PROCEDURE DrawCircle(cx, cy: INTEGER; r: REAL; color: Color);
+
+PROCEDURE DrawCircleLines(cx, cy: INTEGER; r: REAL; color: Color);
 
 PROCEDURE DrawRectangle(x, y, w, h: INTEGER; color: Color);
 
