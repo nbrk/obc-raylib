@@ -144,9 +144,9 @@ MODULE rl;
       END;
 
       Texture* = RECORD
-         id- : INTEGER;
-         width-, height- : INTEGER;
-         mipmaps-, format- : INTEGER;
+         id- : LONGINT;
+         width-, height- : LONGINT;
+         mipmaps-, format- : LONGINT;
       END;
 
       Texture2D* = Texture;
@@ -155,6 +155,28 @@ MODULE rl;
          offset*, target* : Vector2;
          rotation*, zoom* : REAL;
       END;
+
+      Image* = RECORD
+         data-           : POINTER TO ARRAY OF SYSTEM.BYTE;
+         width-, height- : LONGINT;
+         mipmaps-        : LONGINT;
+         format-         : LONGINT;
+      END;
+
+      GlyphInfo* = RECORD
+         value-                        : LONGINT;
+         offsetX-, offsetY-, advanceX- : LONGINT;
+         image-                        : Image;
+      END;
+
+      Font* = RECORD
+         baseSize-                  : LONGINT;
+         glyphCount-, glyphPadding- : LONGINT;
+         texture-                   : Texture2D;
+         recs-                      : POINTER TO Rectangle;
+         glyphs-                    : POINTER TO GlyphInfo;
+      END;
+
 
    (* Supporting variables *)
 
@@ -205,8 +227,13 @@ MODULE rl;
    PROCEDURE DrawRectangleRec* (rec : Rectangle; color : Color) IS "DrawRectangleRecWrapper";
    PROCEDURE DrawRectangleLines*(x, y, w, h : INTEGER; color : Color) IS "DrawRectangleLinesWrapper";
 
+   PROCEDURE LoadFont*(path : ARRAY OF CHAR; VAR res : Font) IS "LoadFontWrapper";
+   PROCEDURE UnloadFont*(font : Font) IS "UnloadFontWrapper";
+   PROCEDURE IsFontReady*(font : Font) : BOOLEAN IS "IsFontReadyWrapper";
    PROCEDURE DrawFPS*(x, y : INTEGER) IS "DrawFPS";
    PROCEDURE DrawText*(text : ARRAY OF CHAR; x, y, fontSize : INTEGER; color : Color) IS "DrawTextWrapper";
+   PROCEDURE DrawTextEx*(font : Font; text : ARRAY OF CHAR; pos : Vector2; fontSize,
+                        fontSpacing : REAL; color : Color) IS "DrawTextExWrapper";
 
    PROCEDURE CheckCollisionPointRec* (point : Vector2; rec : Rectangle) : BOOLEAN IS "CheckCollisionPointRecWrapper";
    PROCEDURE CheckCollisionRecs* (rec1, rec2 : Rectangle) : BOOLEAN IS "CheckCollisionRecsWrapper";
@@ -221,7 +248,7 @@ MODULE rl;
    PROCEDURE ColorToInt* (color : Color) : LONGINT IS "ColorToIntWrapper";
    PROCEDURE GetColor*(hexValue : LONGINT; VAR res : Color) IS "GetColorWrapper";
 
-   (* Internal service procedures *)
+   (* Internal service procedures (not exported) *)
 
    PROCEDURE SetupColorConstants;
 

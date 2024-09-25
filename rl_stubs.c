@@ -47,6 +47,11 @@ void DrawTextWrapper(const char *text, int x, int y, int fontSize, Color *color)
 {
    DrawText(text, x, y, fontSize, *color);
 }
+void DrawTextExWrapper(Font *font, const char *text, Vector2 *pos, float fontSize,
+                       float fontSpacing, Color *color)
+{
+   DrawTextEx(*font, text, *pos, fontSize, fontSpacing, *color);
+}
 bool CheckCollisionPointRecWrapper(Vector2 *point, Rectangle *rec)
 {
    return CheckCollisionPointRec(*point, *rec);
@@ -82,4 +87,16 @@ unsigned int ColorToIntWrapper(Color *color)
 void GetColorWrapper(unsigned int hexValue, Color *res)
 {
    *res = GetColor(hexValue);
+}
+void LoadFontWrapper(const char *path, Font *res)
+{
+   *res = LoadFont(path);
+}
+void UnloadFontWrapper(Font *font)
+{
+   UnloadFont(*font);
+}
+bool IsFontReadyWrapper(Font *font)
+{
+   return IsFontReady(*font);
 }

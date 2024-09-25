@@ -260,19 +260,19 @@ TYPE Vector3 = RECORD (Vector2)
     END;
 
 TYPE Texture = RECORD
-      id-: INTEGER;
-      width-: INTEGER;
-      height-: INTEGER;
-      mipmaps-: INTEGER;
-      format-: INTEGER;
+      id-: LONGINT;
+      width-: LONGINT;
+      height-: LONGINT;
+      mipmaps-: LONGINT;
+      format-: LONGINT;
     END;
 
 TYPE Texture2D = RECORD
-      id-: INTEGER;
-      width-: INTEGER;
-      height-: INTEGER;
-      mipmaps-: INTEGER;
-      format-: INTEGER;
+      id-: LONGINT;
+      width-: LONGINT;
+      height-: LONGINT;
+      mipmaps-: LONGINT;
+      format-: LONGINT;
     END;
 
 TYPE Camera2D = RECORD
@@ -280,6 +280,31 @@ TYPE Camera2D = RECORD
       target: Vector2;
       rotation: REAL;
       zoom: REAL;
+    END;
+
+TYPE Image = RECORD
+      data-: POINTER TO ARRAY OF SYSTEM.BYTE;
+      width-: LONGINT;
+      height-: LONGINT;
+      mipmaps-: LONGINT;
+      format-: LONGINT;
+    END;
+
+TYPE GlyphInfo = RECORD
+      value-: LONGINT;
+      offsetX-: LONGINT;
+      offsetY-: LONGINT;
+      advanceX-: LONGINT;
+      image-: Image;
+    END;
+
+TYPE Font = RECORD
+      baseSize-: LONGINT;
+      glyphCount-: LONGINT;
+      glyphPadding-: LONGINT;
+      texture-: Texture;
+      recs-: POINTER TO Rectangle;
+      glyphs-: POINTER TO GlyphInfo;
     END;
 
 VAR lightgray: Color;
@@ -404,9 +429,17 @@ PROCEDURE DrawRectangleRec(rec: Rectangle; color: Color);
 
 PROCEDURE DrawRectangleLines(x, y, w, h: INTEGER; color: Color);
 
+PROCEDURE LoadFont(path: ARRAY OF CHAR; VAR res: Font);
+
+PROCEDURE UnloadFont(font: Font);
+
+PROCEDURE IsFontReady(font: Font): BOOLEAN;
+
 PROCEDURE DrawFPS(x, y: INTEGER);
 
 PROCEDURE DrawText(text: ARRAY OF CHAR; x, y, fontSize: INTEGER; color: Color);
+
+PROCEDURE DrawTextEx(font: Font; text: ARRAY OF CHAR; pos: Vector2; fontSize, fontSpacing: REAL; color: Color);
 
 PROCEDURE CheckCollisionPointRec(point: Vector2; rec: Rectangle): BOOLEAN;
 
