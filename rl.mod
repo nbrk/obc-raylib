@@ -143,6 +143,10 @@ MODULE rl;
          z* : REAL;
       END;
 
+      Vector4* = RECORD(Vector3)
+         w* : REAL;
+      END;
+
       Texture* = RECORD
          id- : LONGINT;
          width-, height- : LONGINT;
@@ -249,6 +253,7 @@ MODULE rl;
    PROCEDURE Fade* (color : Color; alpha : REAL; VAR res : Color) IS "FadeWrapper";
    PROCEDURE ColorToInt* (color : Color) : LONGINT IS "ColorToIntWrapper";
    PROCEDURE GetColor*(hexValue : LONGINT; VAR res : Color) IS "GetColorWrapper";
+   PROCEDURE ColorFromNormalized*(rgba : Vector4; VAR res : Color) IS "ColorFromNormalizedWrapper";
 
    (* Internal service procedures (not exported) *)
 

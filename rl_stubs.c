@@ -92,6 +92,10 @@ unsigned int ColorToIntWrapper(Color *color)
 {
    return ColorToInt(*color);
 }
+void ColorFromNormalizedWrapper(Vector4 *rgba, Color *res)
+{
+   *res = ColorFromNormalized(*rgba);
+}
 void GetColorWrapper(unsigned int hexValue, Color *res)
 {
    *res = GetColor(hexValue);

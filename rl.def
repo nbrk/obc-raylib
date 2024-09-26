@@ -259,6 +259,13 @@ TYPE Vector3 = RECORD (Vector2)
       z: REAL;
     END;
 
+TYPE Vector4 = RECORD (Vector3)
+      x: REAL;
+      y: REAL;
+      z: REAL;
+      w: REAL;
+    END;
+
 TYPE Texture = RECORD
       id-: LONGINT;
       width-: LONGINT;
@@ -462,5 +469,7 @@ PROCEDURE Fade(color: Color; alpha: REAL; VAR res: Color);
 PROCEDURE ColorToInt(color: Color): LONGINT;
 
 PROCEDURE GetColor(hexValue: LONGINT; VAR res: Color);
+
+PROCEDURE ColorFromNormalized(rgba: Vector4; VAR res: Color);
 
 END rl.
