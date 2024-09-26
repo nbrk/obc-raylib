@@ -56,9 +56,17 @@ bool CheckCollisionPointRecWrapper(Vector2 *point, Rectangle *rec)
 {
    return CheckCollisionPointRec(*point, *rec);
 }
+bool CheckCollisionPointCircleWrapper(Vector2 *point, Vector2 *circle, float r)
+{
+   return CheckCollisionPointCircle(*point, *circle, r);
+}
 bool CheckCollisionRecsWrapper(Rectangle *rec1, Rectangle *rec2)
 {
    return CheckCollisionRecs(*rec1, *rec2);
+}
+void GetScreenToWorld2DWrapper(Vector2 *pos, Camera2D *cam, Vector2 *res)
+{
+   *res = GetScreenToWorld2D(*pos, *cam);
 }
 void LoadTextureWrapper(const char *fileName, Texture2D *tex)
 {

@@ -214,6 +214,7 @@ MODULE rl;
    PROCEDURE EndDrawing* IS "EndDrawing";
    PROCEDURE BeginMode2D*(camera : Camera2D) IS "BeginMode2DWrapper";
    PROCEDURE EndMode2D* IS "EndMode2D";
+   PROCEDURE GetScreenToWorld2D*(pos : Vector2; camera : Camera2D; VAR res : Vector2) IS "GetScreenToWorld2DWrapper";
    PROCEDURE GetFrameTime*() : REAL IS "GetFrameTime";
    PROCEDURE GetTime*() : LONGREAL IS "GetTime";
 
@@ -236,6 +237,7 @@ MODULE rl;
                         fontSpacing : REAL; color : Color) IS "DrawTextExWrapper";
 
    PROCEDURE CheckCollisionPointRec* (point : Vector2; rec : Rectangle) : BOOLEAN IS "CheckCollisionPointRecWrapper";
+   PROCEDURE CheckCollisionPointCircle* (point, center : Vector2; radius : REAL) : BOOLEAN IS "CheckCollisionPointCircleWrapper";
    PROCEDURE CheckCollisionRecs* (rec1, rec2 : Rectangle) : BOOLEAN IS "CheckCollisionRecsWrapper";
 
    PROCEDURE LoadTexture*(fileName : ARRAY OF CHAR; VAR tex : Texture2D) IS "LoadTextureWrapper";

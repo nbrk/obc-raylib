@@ -407,6 +407,8 @@ PROCEDURE BeginMode2D(camera: Camera2D);
 
 PROCEDURE EndMode2D;
 
+PROCEDURE GetScreenToWorld2D(pos: Vector2; camera: Camera2D; VAR res: Vector2);
+
 PROCEDURE GetFrameTime(): REAL;
 
 PROCEDURE GetTime(): LONGREAL;
@@ -442,6 +444,8 @@ PROCEDURE DrawText(text: ARRAY OF CHAR; x, y, fontSize: INTEGER; color: Color);
 PROCEDURE DrawTextEx(font: Font; text: ARRAY OF CHAR; pos: Vector2; fontSize, fontSpacing: REAL; color: Color);
 
 PROCEDURE CheckCollisionPointRec(point: Vector2; rec: Rectangle): BOOLEAN;
+
+PROCEDURE CheckCollisionPointCircle(point, center: Vector2; radius: REAL): BOOLEAN;
 
 PROCEDURE CheckCollisionRecs(rec1, rec2: Rectangle): BOOLEAN;
 
