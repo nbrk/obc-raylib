@@ -15,6 +15,10 @@ void DrawPixelWrapper(int x, int y, Color *color)
 {
    DrawPixel(x, y, *color);
 }
+void DrawPixelVWrapper(Vector2 *pos, Color *color)
+{
+   DrawPixelV(*pos, *color);
+}
 void DrawLineWrapper(int sx, int sy, int ex, int ey, Color *color)
 {
    DrawLine(sx, sy, ex, ey, *color);
@@ -27,6 +31,10 @@ void DrawCircleWrapper(int cx, int cy, float r, Color *color)
 {
    DrawCircle(cx, cy, r, *color);
 }
+void DrawCircleVWrapper(Vector2 *c, float r, Color *color)
+{
+   DrawCircleV(*c, r, *color);
+}
 void DrawCircleLinesWrapper(int cx, int cy, float r, Color *color)
 {
    DrawCircleLines(cx, cy, r, *color);
@@ -38,6 +46,10 @@ void DrawRectangleWrapper(int x, int y, int w, int h, Color *color)
 void DrawRectangleLinesWrapper(int x, int y, int w, int h, Color *color)
 {
    DrawRectangleLines(x, y, w, h, *color);
+}
+void DrawRectangleLinesExWrapper(Rectangle *rec, float thick, Color *color)
+{
+   DrawRectangleLinesEx(*rec, thick, *color);
 }
 void DrawRectangleRecWrapper(Rectangle *rec, Color *color)
 {
@@ -111,4 +123,8 @@ void UnloadFontWrapper(Font *font)
 bool IsFontReadyWrapper(Font *font)
 {
    return IsFontReady(*font);
+}
+void GetFontDefaultWrapper(Font *font)
+{
+   *font = GetFontDefault();
 }

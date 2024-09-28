@@ -424,11 +424,15 @@ PROCEDURE ClearBackground(color: Color);
 
 PROCEDURE DrawPixel(x, y: INTEGER; color: Color);
 
+PROCEDURE DrawPixelV(pos: Vector2; color: Color);
+
 PROCEDURE DrawLine(sx, sy, ex, ey: INTEGER; color: Color);
 
 PROCEDURE DrawLineEx(sv, ev: Vector2; thick: REAL; color: Color);
 
 PROCEDURE DrawCircle(cx, cy: INTEGER; r: REAL; color: Color);
+
+PROCEDURE DrawCircleV(c: Vector2; r: REAL; color: Color);
 
 PROCEDURE DrawCircleLines(cx, cy: INTEGER; r: REAL; color: Color);
 
@@ -437,6 +441,8 @@ PROCEDURE DrawRectangle(x, y, w, h: INTEGER; color: Color);
 PROCEDURE DrawRectangleRec(rec: Rectangle; color: Color);
 
 PROCEDURE DrawRectangleLines(x, y, w, h: INTEGER; color: Color);
+
+PROCEDURE DrawRectangleLinesEx(rec: Rectangle; thick: REAL; color: Color);
 
 PROCEDURE LoadFont(path: ARRAY OF CHAR; VAR res: Font);
 
@@ -449,6 +455,8 @@ PROCEDURE DrawFPS(x, y: INTEGER);
 PROCEDURE DrawText(text: ARRAY OF CHAR; x, y, fontSize: INTEGER; color: Color);
 
 PROCEDURE DrawTextEx(font: Font; text: ARRAY OF CHAR; pos: Vector2; fontSize, fontSpacing: REAL; color: Color);
+
+PROCEDURE GetFontDefault(VAR res: Font);
 
 PROCEDURE CheckCollisionPointRec(point: Vector2; rec: Rectangle): BOOLEAN;
 

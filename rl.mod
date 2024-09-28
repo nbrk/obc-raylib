@@ -224,13 +224,16 @@ MODULE rl;
 
    PROCEDURE ClearBackground* (color : Color) IS "ClearBackgroundWrapper";
    PROCEDURE DrawPixel* (x, y : INTEGER; color : Color) IS "DrawPixelWrapper";
+   PROCEDURE DrawPixelV*(pos : Vector2; color : Color) IS "DrawPixelVWrapper";
    PROCEDURE DrawLine* (sx, sy, ex, ey : INTEGER; color : Color) IS "DrawLineWrapper";
    PROCEDURE DrawLineEx*(sv, ev : Vector2; thick : REAL; color : Color) IS "DrawLineExWrapper";
    PROCEDURE DrawCircle* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleWrapper";
+   PROCEDURE DrawCircleV* (c : Vector2; r : REAL; color : Color) IS "DrawCircleVWrapper";
    PROCEDURE DrawCircleLines* (cx, cy : INTEGER; r : REAL; color : Color) IS "DrawCircleLinesWrapper";
    PROCEDURE DrawRectangle* (x, y, w, h : INTEGER; color : Color) IS "DrawRectangleWrapper";
    PROCEDURE DrawRectangleRec* (rec : Rectangle; color : Color) IS "DrawRectangleRecWrapper";
    PROCEDURE DrawRectangleLines*(x, y, w, h : INTEGER; color : Color) IS "DrawRectangleLinesWrapper";
+   PROCEDURE DrawRectangleLinesEx*(rec : Rectangle; thick : REAL; color : Color) IS "DrawRectangleLinesExWrapper";
 
    PROCEDURE LoadFont*(path : ARRAY OF CHAR; VAR res : Font) IS "LoadFontWrapper";
    PROCEDURE UnloadFont*(font : Font) IS "UnloadFontWrapper";
@@ -239,7 +242,7 @@ MODULE rl;
    PROCEDURE DrawText*(text : ARRAY OF CHAR; x, y, fontSize : INTEGER; color : Color) IS "DrawTextWrapper";
    PROCEDURE DrawTextEx*(font : Font; text : ARRAY OF CHAR; pos : Vector2; fontSize,
                         fontSpacing : REAL; color : Color) IS "DrawTextExWrapper";
-
+   PROCEDURE GetFontDefault*(VAR res : Font) IS "GetFontDefaultWrapper";
    PROCEDURE CheckCollisionPointRec* (point : Vector2; rec : Rectangle) : BOOLEAN IS "CheckCollisionPointRecWrapper";
    PROCEDURE CheckCollisionPointCircle* (point, center : Vector2; radius : REAL) : BOOLEAN IS "CheckCollisionPointCircleWrapper";
    PROCEDURE CheckCollisionRecs* (rec1, rec2 : Rectangle) : BOOLEAN IS "CheckCollisionRecsWrapper";
