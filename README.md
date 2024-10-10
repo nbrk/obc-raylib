@@ -4,8 +4,9 @@
 This is a small project to provide usable multimedia and GUI capabilites to 
 Oberon-2 programs compiled by the Oxford Oberon Compiler (OBC).
 
-For this, a subset of popular libraries `raylib`, `raymath` and `raygui` is
-to be bound using the OBC's own FFI and bespoke C wrappers where necessary.
+The ultimate goal is to have complete Oberon-2 interfaces to `raylib`, `raymath` and `raygui` for this compiler.
+
+**Currently, only a small fraction of `raylib` API is bound. This project is a Work In Progress.**
 
 ## Differences VS original C API
 While most of the bindings has been designed to mimic the original raylib API, some semantic changes were introduced due to Oberon-2 procedures' inability to return compound types (records, arrays).
